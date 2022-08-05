@@ -8,6 +8,9 @@ public class CustomerBehaviour : MonoBehaviour
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] private float delayPeriod = 2f;
     [SerializeField] private float radius = 30f;
+    [SerializeField] private Transform marker;
+    [SerializeField] private bool delayIsFixed;
+    private float currentDelay;
     private bool stopAgent;
     private bool onMarch = true;
     private float waitTime;
@@ -19,6 +22,7 @@ public class CustomerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        currentDelay = delayPeriod;
         startPosition = transform.position;
         if (sprite == null) sprite = GetComponent<SpriteRenderer>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -41,7 +45,8 @@ public class CustomerBehaviour : MonoBehaviour
             if(Vector3.Distance(transform.position, navMeshAgent.destination)<= navMeshAgent.stoppingDistance)
             {
                 onMarch = false;
-                waitTime = Time.timeSinceLevelLoad + delayPeriod;
+                if (!delayIsFixed) currentDelay = Random.Range(0, delayPeriod);
+                waitTime = Time.timeSinceLevelLoad + currentDelay;
             }
         }
     }
@@ -53,6 +58,7 @@ public class CustomerBehaviour : MonoBehaviour
     public void SetDestination(Vector3 pos)
     {
         navMeshAgent.destination = pos;
+        if (marker != null) marker.position = pos;
         onMarch = true;
     }
 

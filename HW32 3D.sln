@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponents", "NavMeshComponents.csproj", "{F948CEA5-0AD4-2D25-82CF-CF97A2EBCAB3}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponents", "NavMeshComponents.csproj", "{03711570-8D3C-AB5E-1A4C-00C66B0AD49F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{308EA6E6-A980-6852-D14A-E236DACBA09C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponentsEditor", "NavMeshComponentsEditor.csproj", "{A647EB8B-DBD0-8E6D-9365-501FE7AE54CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponentsEditor", "NavMeshComponentsEditor.csproj", "{1DF6AD3D-D943-635F-76A1-BE0952ABF1F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,20 +15,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F948CEA5-0AD4-2D25-82CF-CF97A2EBCAB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F948CEA5-0AD4-2D25-82CF-CF97A2EBCAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F948CEA5-0AD4-2D25-82CF-CF97A2EBCAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F948CEA5-0AD4-2D25-82CF-CF97A2EBCAB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03711570-8D3C-AB5E-1A4C-00C66B0AD49F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03711570-8D3C-AB5E-1A4C-00C66B0AD49F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03711570-8D3C-AB5E-1A4C-00C66B0AD49F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03711570-8D3C-AB5E-1A4C-00C66B0AD49F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{308EA6E6-A980-6852-D14A-E236DACBA09C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{308EA6E6-A980-6852-D14A-E236DACBA09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{308EA6E6-A980-6852-D14A-E236DACBA09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{308EA6E6-A980-6852-D14A-E236DACBA09C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A647EB8B-DBD0-8E6D-9365-501FE7AE54CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A647EB8B-DBD0-8E6D-9365-501FE7AE54CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A647EB8B-DBD0-8E6D-9365-501FE7AE54CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A647EB8B-DBD0-8E6D-9365-501FE7AE54CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DF6AD3D-D943-635F-76A1-BE0952ABF1F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DF6AD3D-D943-635F-76A1-BE0952ABF1F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DF6AD3D-D943-635F-76A1-BE0952ABF1F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DF6AD3D-D943-635F-76A1-BE0952ABF1F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A82B6103-D08E-4744-93BC-B7BF71B13B82}
 	EndGlobalSection
 EndGlobal

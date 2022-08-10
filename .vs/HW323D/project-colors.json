@@ -5,7 +5,17 @@
       "ProjectGuid": "92a7bced-1dad-bd67-1d81-efe8301acaad",
       "DisplayName": "Assembly-CSharp",
       "ColorIndex": 0
+    },
+    "308ea6e6-a980-6852-d14a-e236dacba09c": {
+      "ProjectGuid": "308ea6e6-a980-6852-d14a-e236dacba09c",
+      "DisplayName": "Assembly-CSharp",
+      "ColorIndex": 1
+    },
+    "03711570-8d3c-ab5e-1a4c-00c66b0ad49f": {
+      "ProjectGuid": "03711570-8d3c-ab5e-1a4c-00c66b0ad49f",
+      "DisplayName": "NavMeshComponents",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 3
 }

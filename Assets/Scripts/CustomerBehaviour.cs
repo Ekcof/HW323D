@@ -35,7 +35,7 @@ public class CustomerBehaviour : MonoBehaviour
         {
             if (waitTime < Time.timeSinceLevelLoad)
             {
-                SetDestination(GetRandomPositionOnNavmesh());
+                SetDestination();
             }
         }
         else if (onMarch)
@@ -53,9 +53,19 @@ public class CustomerBehaviour : MonoBehaviour
     /// Set the destination point
     /// </summary>
     /// <param name="pos"></param>
-    public void SetDestination(Vector3 pos)
+    public void SetDestination()
     {
         int index = Random.Range(0, zones.Length);
+        Transform zone = zones[index];
+        NavMeshModifier navMeshModifier = zone.GetComponent<NavMeshModifier>();
+        int areaInt = 0;
+        if (navMeshModifier != null) { areaInt = navMeshModifier.area; }
+        else
+        {
+            NavMeshModifierVolume navMeshModifierVolume = zone.GetComponent<NavMeshModifierVolume>();
+            if (navMeshModifierVolume != null) { areaInt = navMeshModifierVolume.area; }
+        }
+        Vector3 pos = GetRandomPositionOnNavmesh(zone.position, areaInt);
         navMeshAgent.destination = pos;
         if (marker != null) marker.position = pos;
         onMarch = true;
@@ -69,11 +79,8 @@ public class CustomerBehaviour : MonoBehaviour
         randomDirection += zonePosition;
         NavMeshHit hit;
         Vector3 finalPosition = Vector3.zero;
-        bool navBool = (NavMesh.SamplePosition(randomDirection, out hit, 1f, navMeshArea));
-        if (navBool)
-        {
-            finalPosition = hit.position;
-        }
+        bool navBool = (NavMesh.SamplePosition(randomDirection, out hit, radius, navMeshArea));
+        finalPosition = hit.position;
         return finalPosition;
     }
 

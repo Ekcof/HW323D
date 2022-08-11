@@ -11,6 +11,11 @@ public class CustomerBehaviour : MonoBehaviour
     [SerializeField] private Transform marker;
     [SerializeField] private bool delayIsFixed;
     [SerializeField] private Transform[] zones;
+    private int areaInt;
+    private Transform zone;
+    private Bounds bounds;
+    private float xBound;
+    private float yBound;
     private float currentDelay;
     private bool stopAgent;
     private bool onMarch = true;
@@ -56,30 +61,46 @@ public class CustomerBehaviour : MonoBehaviour
     public void SetDestination()
     {
         int index = Random.Range(0, zones.Length);
-        Transform zone = zones[index];
+        zone = zones[index];
         NavMeshModifier navMeshModifier = zone.GetComponent<NavMeshModifier>();
-        int areaInt = 0;
-        if (navMeshModifier != null) { areaInt = navMeshModifier.area; }
+        areaInt = 0;
+        Vector3 pos = Vector3.zero;
+        if (navMeshModifier != null)
+        {
+            areaInt = navMeshModifier.area;
+        }
         else
         {
             NavMeshModifierVolume navMeshModifierVolume = zone.GetComponent<NavMeshModifierVolume>();
             if (navMeshModifierVolume != null) { areaInt = navMeshModifierVolume.area; }
         }
-        Vector3 pos = GetRandomPositionOnNavmesh(zone.position, areaInt);
+
+        Renderer renderer = zone.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            bounds = renderer.bounds;
+            pos = new Vector3(Random.Range(bounds.min.x, bounds.max.x), zone.position.y, Random.Range(bounds.min.z, bounds.max.z));
+        }
+        else
+        {
+            pos = GetRandomPositionOnNavmesh(zone.position);
+        }
+        marker.position = pos;
         navMeshAgent.destination = pos;
-        if (marker != null) marker.position = pos;
         onMarch = true;
     }
 
     public bool StopAgent { get { return stopAgent; } set { stopAgent = value; } }
 
-    private Vector3 GetRandomPositionOnNavmesh(Vector3 zonePosition, int navMeshArea)
+    private Vector3 GetRandomPositionOnNavmesh(Vector3 zonePosition)
     {
         Vector3 randomDirection = Random.insideUnitSphere * radius;
         randomDirection += zonePosition;
+        Debug.DrawLine(transform.position, randomDirection);
         NavMeshHit hit;
         Vector3 finalPosition = Vector3.zero;
-        bool navBool = (NavMesh.SamplePosition(randomDirection, out hit, radius, navMeshArea));
+        bool navBool = (NavMesh.SamplePosition(randomDirection, out hit, radius, NavMesh.AllAreas));
+        if (!navBool) Debug.Log("noon!!!");
         finalPosition = hit.position;
         return finalPosition;
     }

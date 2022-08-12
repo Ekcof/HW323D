@@ -15,7 +15,12 @@
       "ProjectGuid": "03711570-8d3c-ab5e-1a4c-00c66b0ad49f",
       "DisplayName": "NavMeshComponents",
       "ColorIndex": 2
+    },
+    "f948cea5-0ad4-2d25-82cf-cf97a2ebcab3": {
+      "ProjectGuid": "f948cea5-0ad4-2d25-82cf-cf97a2ebcab3",
+      "DisplayName": "NavMeshComponents",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 4
 }

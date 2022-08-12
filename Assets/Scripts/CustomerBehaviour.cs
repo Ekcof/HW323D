@@ -74,7 +74,7 @@ public class CustomerBehaviour : MonoBehaviour
             NavMeshModifierVolume navMeshModifierVolume = zone.GetComponent<NavMeshModifierVolume>();
             if (navMeshModifierVolume != null) { areaInt = navMeshModifierVolume.area; }
         }
-
+        Collider collider = zone.GetComponent<Collider>();
         Renderer renderer = zone.GetComponent<Renderer>();
         if (renderer != null)
         {
@@ -83,7 +83,11 @@ public class CustomerBehaviour : MonoBehaviour
         }
         else
         {
-            pos = GetRandomPositionOnNavmesh(zone.position);
+            if (collider != null)
+            {
+                bounds = collider.bounds;
+                pos = new Vector3(Random.Range(bounds.min.x, bounds.max.x), zone.position.y, Random.Range(bounds.min.z, bounds.max.z));
+            }
         }
         marker.position = pos;
         navMeshAgent.destination = pos;

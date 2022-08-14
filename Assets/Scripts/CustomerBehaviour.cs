@@ -8,9 +8,8 @@ public class CustomerBehaviour : MonoBehaviour
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] private float delayPeriod = 2f;
     [SerializeField] private float radius = 30f;
-    [SerializeField] private Transform marker;
     [SerializeField] private bool delayIsFixed;
-    [SerializeField] private Transform[] zones;
+    private Transform[] zones;
     private int areaInt;
     private Transform zone;
     private Bounds bounds;
@@ -26,6 +25,7 @@ public class CustomerBehaviour : MonoBehaviour
 
     private void Start()
     {
+        zones = LevelLogicScript.Instance.GetNavMeshZones();
         currentDelay = delayPeriod;
         startPosition = transform.position;
         if (sprite == null) sprite = GetComponent<SpriteRenderer>();
@@ -89,7 +89,6 @@ public class CustomerBehaviour : MonoBehaviour
                 pos = new Vector3(Random.Range(bounds.min.x, bounds.max.x), zone.position.y, Random.Range(bounds.min.z, bounds.max.z));
             }
         }
-        marker.position = pos;
         navMeshAgent.destination = pos;
         onMarch = true;
     }

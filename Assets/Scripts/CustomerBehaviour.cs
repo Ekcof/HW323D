@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+
 [RequireComponent(typeof(NavMeshAgent))]
 
 public class CustomerBehaviour : MonoBehaviour
@@ -36,14 +37,18 @@ public class CustomerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (!stopAgent && !onMarch)
+        if (stopAgent) { navMeshAgent.isStopped = true; } else
+        {
+            navMeshAgent.isStopped = false;
+        }
+        if (!onMarch)
         {
             if (waitTime < Time.timeSinceLevelLoad)
             {
                 SetDestination();
             }
         }
-        else if (onMarch)
+        else
         {
             if (Vector3.Distance(transform.position, navMeshAgent.destination) <= navMeshAgent.stoppingDistance)
             {
@@ -93,7 +98,7 @@ public class CustomerBehaviour : MonoBehaviour
         onMarch = true;
     }
 
-    public bool StopAgent { get { return stopAgent; } set { stopAgent = value; } }
+    public bool StopAgent { get { return stopAgent; } set { Debug.Log("aa " + value);  stopAgent = value; } }
 
     private Vector3 GetRandomPositionOnNavmesh(Vector3 zonePosition)
     {
